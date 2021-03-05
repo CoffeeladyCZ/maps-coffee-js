@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">   
+  <link rel="stylesheet" href="./style.css">
+
+  <title>Mapa kaváren - Coffeelady</title>
+</head>
+<body class="App">
+
+  <header class="App-header">
+    <h1>Mapa kaváren od Coffeelady</h1>
+    <p class="claim">... tady se jede jenom výběrovka</p>
+    <img class="coffee-cup" src=./img/coffee-cup.png />
+  </header>
+  
+  <section class="App-map">
+    <div id='map'></div>
+    <div class="list-coffeehouse">
+      <h4 class="list-name">Kofárna</h4>
+      <p class="list-adress">Zborovská 60, Malá Strana</p>
+      <p>Otevřeno: Po - Ne: 8:00 - 19:00 </p>
+    </div>
+
+  </section>
+
+
+
+
+  <footer>
+    <p>by Marcela Karafizievová</p>
+  </footer>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmh8Jp0cdEFCQ2N5wsXy6Hu6xBOtm9lfU&callback=initMap"></script>
+  <script src='script.js'></script>
+</body>
+</html>
