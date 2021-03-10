@@ -77,17 +77,20 @@ footer p {
   top: 20px;
 }
 
+/* navigation */
 .navigation-ul {
-  display: flex;
-  justify-content: start;
-  margin-left: 150px;
-  margin-top: 0;
-}
+  /* display: flex;
+  justify-content: center;
+  margin-top: 0; */
+  clear: both;
+  transition: max-height .2s ease-out;
+  max-height: 0;
+} 
 
 .navigation li {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 50px;
+  /* display: flex; */
+  /* margin-right: 50px; */
+  padding: 10px;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -105,9 +108,12 @@ footer p {
   transition: all 0.15s ease-in;
 }
 
+/* hamburger menu */
+
+
 /* section coffeehouse */
 .list-coffeehouse {
-
+  align-self: flex-start;
   margin-left: 50px;
 
 }
@@ -136,31 +142,28 @@ footer p {
   background-color: #D7DBDD;
 }
 
-@media (max-width: 730px) {
-  #map {
-    width: 75%;
-    margin: 0 auto;
-  }
-  .list-coffeehouse {
-    margin-left: 0;
-    width: 300px;
-    margin: 0 auto;
-  }
-  .navigation-ul {
-    margin-left: 0;
-  }
+/* maps marker */
+.marker-img {
+  background-image: './img/coffee-shop.png';
 }
 
-@media (max-width: 1070px) {
-  .coffee-cup {
-    display: none;
-  }
+/* Info Window */
+#content {
+  font-family: 'Varela Round', sans-serif; 
+  border-radius: 8px;
 }
 
-@media (max-width: 730px) {
-  .App-map {
-    display: block;
-  }
+#firstHeading {
+  color: #9F2B1F;
+  font-family: 'Varela Round', sans-serif; 
+}
+
+.contentImage {
+  position: relative;
+  width: 40px;
+  height: 100%;
+  top: 43px;
+  left: -117px;
 }
 
 @media (max-width: 560px) {
@@ -178,35 +181,45 @@ footer p {
   }
 }
 
-/* maps marker */
-.marker-img {
-  background-image: './img/coffee-shop.png';
+@media (max-width: 730px) {
+  .App-map {
+    display: block;
+  }
+  #map {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .list-coffeehouse {
+    margin-left: 0;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .navigation-ul {
+    margin-left: 0;
+  }
 }
 
-/* Info Window */
-#content {
-  font-family: 'Varela Round', sans-serif; 
-  border-radius: 8px;
+@media (min-width: 819px) {
+  .menu--squeeze {
+    display: none;
+  }
 }
 
-#firstHeading {
-  color: #9F2B1F;
-  font-family: 'Varela Round', sans-serif; 
+@media (max-width: 820px) {
+  .navigation-ul {
+    /* display: none; */
+  }
+  .navigation {
+    margin-bottom: 20px;
+
+  }
 }
 
-/* .contentHeader {
-  display: flex;
-  justify-content: space-evenly;
-} */
-
-.contentImage {
-  position: relative;
-  width: 40px;
-  height: 100%;
-  top: 43px;
-  left: -117px;
+@media (max-width: 1070px) {
+  .coffee-cup {
+    display: none;
+  }
 }
 
-/* .timeContent {
-  font-weight: 300;
-} */
+
+

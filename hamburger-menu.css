@@ -1,0 +1,92 @@
+/* html
+<section class="navigation">
+        <input class="menu menu--squeeze" type="checkbox" onclick="myFunction()" />
+          <span class="menu__inner"></span>
+       
+        <ul class="navigation-ul">
+          <li id ="letna"><a href="#">Letná</a></li>
+          <li id="karlin"><a href="#">Karlín</a></li>
+          <li id="dejvice"><a href="#">Dejvice</a></li>
+          <li id="vinohrady"><a href="#">Vinohrady</a></li>
+          <li id="nusle"><a href="#">Nusle</a></li>
+          <li id="centrum"><a href="#">Centrum</a></li>
+
+        </ul>
+  </section>
+*/
+
+.menu {
+  width: 4rem;
+  height: 3.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0.5rem;
+  text-indent: 5rem;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  
+}
+
+.menu:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.055);
+}
+
+.menu__inner,
+.menu__inner:before,
+.menu__inner:after {
+  position: absolute;
+  height: 0.25rem;
+  background-color: #9F2B1F;
+  border-radius: 0.25rem;
+  display: block;
+}
+
+.menu__inner {
+  width: 70%;
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu__inner:before,
+.menu__inner:after {
+  content: "";
+  left: 0;
+  width: 100%;
+}
+
+.menu__inner:before {
+  top: -0.75rem;
+}
+
+.menu__inner:after {
+  top: 0.75rem;
+}
+
+.menu--squeeze .menu__inner,
+.menu--squeeze .menu__inner:before,
+.menu--squeeze .menu__inner:after {
+  transition: top 0.2s 0.2s, 
+              transform 0.2s,
+              background-color 0.4s 0.2s;
+}
+
+.menu--squeeze.menu--active .menu__inner {
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.menu--squeeze.menu--active .menu__inner:before {
+  transform: rotate(-45deg);
+  top: 0;
+  transition: top 0.2s, transform 0.2s 0.14s;
+}
+
+.menu--squeeze.menu--active .menu__inner:after {
+  transform: rotate(45deg);
+  top: 0;
+  transition: top 0.2s, transform 0.2s 0.14s;
+}
