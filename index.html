@@ -14,32 +14,25 @@
     <h1>Mapa kaváren</h1>
     <p class="claim">... tady se jede jenom výběrovka</p>
     <img class="coffee-cup" src=./img/coffee-cup.png />
-  </header>
-  <section>
-    <nav class="navigation">
-      <ul class="navigation-ul">
+ 
+    <div class="navigation">
+      <input class="menu-btn" type="checkbox" id="menu-btn">
+      <label for="menu-btn" class="menu-icon"><span class="nav-icon"></span></label>
+      </label>
+      <ul class="navigation-menu">
         <li id ="letna"><a href="#">Letná</a></li>
         <li id="karlin"><a href="#">Karlín</a></li>
         <li id="dejvice"><a href="#">Dejvice</a></li>
         <li id="vinohrady"><a href="#">Vinohrady</a></li>
         <li id="nusle"><a href="#">Nusle</a></li>
         <li id="centrum"><a href="#">Centrum</a></li>
-
       </ul>
-    </nav>
-  </section>
+    </div>
+  </header>
   
   <section class="App-map">
-    <div id='map'></div>
-    <div class="list-coffeehouse">
-      <div class="coffeehouse">
-        <h4 class="list-name">Kofárna</h4>
-        <p class="list-adress">Zborovská 60, Malá Strana</p>
-        <p>Otevřeno: Po - Ne: 8:00 - 19:00 </p>
-      </div>
-      
-    </div>
-
+    <div id="map"></div>
+    <div class="list-coffeehouse"></div>
   </section>
 
   <footer>
