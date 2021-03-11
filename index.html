@@ -8,19 +8,18 @@
 
   <title>Mapa kaváren - Coffeelady</title>
 </head>
-<body class="App dark-mode">
+<body class="App">
 
   <header class="App-header">
     <h1>Mapa kaváren</h1>
     <p class="claim">... tady se jede jenom výběrovka</p>
     <img class="coffee-cup" src=./img/coffee-cup.png />
-  </header>
  
-  <nav class="navigation">
-      <button class="menu menu--squeeze" type="button" onclick="myFunction()">
-        <span class="menu__inner"></span>
-      </button>
-      <ul class="navigation-ul">
+    <div class="navigation">
+      <input class="menu-btn" type="checkbox" id="menu-btn">
+      <label for="menu-btn" class="menu-icon"><span class="nav-icon"></span></label>
+      </label>
+      <ul class="navigation-menu">
         <li id ="letna"><a href="#">Letná</a></li>
         <li id="karlin"><a href="#">Karlín</a></li>
         <li id="dejvice"><a href="#">Dejvice</a></li>
@@ -28,11 +27,11 @@
         <li id="nusle"><a href="#">Nusle</a></li>
         <li id="centrum"><a href="#">Centrum</a></li>
       </ul>
-  </nav>
- 
+    </div>
+  </header>
   
   <section class="App-map">
-    <div id='map'></div>
+    <div id="map"></div>
     <div class="list-coffeehouse"></div>
   </section>
 

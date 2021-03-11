@@ -1,17 +1,4 @@
 // Hamburger menu
-const menuBtn = document.querySelector('.menu');
-menuBtn.addEventListener('click', () => {
-  menuBtn.classList.toggle('menu--active');
-})
-
-function myFunction() {
-  var x = document.getElementsByClassName('.navigation-ul');
-  if (x.style.display === 'block') {
-    x.style.display = 'none';
-  } else {
-    x.style.display = 'block';
-  }
-}
 
 // Variales
 const letna = document.querySelector('#letna');
@@ -155,6 +142,7 @@ function initMap() {
     list.appendChild(listTime);
   }
 
+  const choiceDistrickt = '';
   // Add filter
   letna.addEventListener('click', () => {
     if (listCoffeehouse[i].district === 'Letná') {
