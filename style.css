@@ -17,13 +17,14 @@ h1 {
   text-align: center;
   
 }
+body,
 .App {
   margin: 0 auto;
   text-align: center;
   font-family: 'Varela Round', sans-serif;  
   font-size: 1em;
   height: 100%;
-  background-color: #F2F4F4 ;
+  background-color: #fff ;
 }
 
 img {
@@ -100,6 +101,7 @@ footer p {
 } 
 
 .navigation li {
+  cursor: pointer;
   margin: 0;
   text-align: center;
   padding: 10px;
@@ -108,16 +110,17 @@ footer p {
   text-transform: uppercase;
   text-decoration: none;
   list-style: none;
+  color:#9F2B1F;
+  transition: all 0.15s ease-in;
+}
+
+.navigation li:hover {
+  color: #C92E1E;
 }
 
 .navigation a {
   text-decoration: none;
   color: #000;
-}
-
-.navigation a:hover {
-  color:#9F2B1F;
-  transition: all 0.15s ease-in;
 }
 
 .navigation .menu-icon {
@@ -211,6 +214,10 @@ footer p {
   background-color: #D7DBDD;
 }
 
+.coffeehouse__hover {
+  background-color: #D7DBDD;
+}
+
 /* maps marker */
 .marker-img {
   background-image: './img/coffee-shop.png';
@@ -247,6 +254,18 @@ footer p {
   }
   .navigation li:last-child {
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 679px) {
+  .navigation {
+    top: 0;
+    right: 0;
+    left: 0;
+
+  }
+  .navigation-menu {
+    position: absolute;
   }
 }
 
