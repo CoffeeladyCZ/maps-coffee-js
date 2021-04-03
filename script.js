@@ -31,7 +31,7 @@ const listCoffeehouse = [
 {
   name: 'format.coffee',
   time: 'Po - Ne: 9:00 - 18:00',
-  address: 'M. Horákové 26, Praha 7-Holešovice',
+  address: 'M. Horákové 26, Praha 7-Letná',
   district: 'Letná',
   type: 'coffeehouse',
   content: ' je další kavárna na Letné od Jackieho.',
@@ -39,17 +39,8 @@ const listCoffeehouse = [
   lng: 14.429540195462284,
 },
 {
-  name: 'Kafe Karlín',
-  address: 'Sokolovská 46/51, Praha -Karlín',
-  district: 'Karlín',
-  time: 'Po - Pá: 7:30 - 17:30',
-  content: ' pokud jezdíte do Karlína nesmíte ji minout.',
-  lat: 50.09300737010227, 
-  lng:14.445987692151286,
-},
-{
   name: 'Café Tvaroh',
-  address: 'Šmeralova 22, Praha 7-Dejvice',
+  address: 'Šmeralova 22, Praha 7-Letná',
   district: 'Letná',
   time: 'Po - Ne: 9:00 - 19:00',
   content: ' je nenápadná kavárna kousek od Centrum Stromovka.',
@@ -64,6 +55,33 @@ const listCoffeehouse = [
   content: ' jedna z nejstarších na Letné.',
   lat: 50.09896095139468, 
   lng: 14.425286868749494,
+},
+{
+  name: 'Dos Mundos Café',
+  address: 'M. Horákové 600, Holešovice, 170 00 Praha 7',
+  district: 'Letná',
+  time: 'Po - Ne: 9:30 - 19:00',
+  content: '',
+  lat: 50.106237669557665,
+  lng: 14.429093765706273,
+},
+{
+  name: 'Cafe Hrnek',
+  address: 'Veletržní 839/49, 170 00 Praha 7-Holešovice',
+  district: 'Letná',
+  time: 'Po - Ne: 10:00 - 18:00',
+  content: '',
+  lat: 50.10134293265671, 
+  lng: 14.42821178016424,
+},
+{
+  name: 'Kafe Karlín',
+  address: 'Sokolovská 46/51, Praha-Karlín',
+  district: 'Karlín',
+  time: 'Po - Pá: 7:30 - 17:30',
+  content: ' pokud jezdíte do Karlína nesmíte ji minout.',
+  lat: 50.09300737010227, 
+  lng:14.445987692151286,
 },
 {
   name: 'Kafe Kiosek',
@@ -83,6 +101,34 @@ const listCoffeehouse = [
   lat: 50.09809293267724,
   lng: 14.40069573866305,
 },
+{
+  name: 'Osada',
+  address: 'Osadní 35, 170 00 Praha 7-Holešovice',
+  district: 'All',
+  time: 'Po - Pá: 8:00 - 20:00, So - Ne: 9:00 - 16:00',
+  content: ', to je kousek Liberce v Praze.',
+  lat: 50.10459685147894,
+  lng: 14.44628384082367,
+},
+{
+  name: 'Kontejner',
+  address: 'Ortenovo nám. 169, 170 00 Praha 7-Holešovice',
+  district: 'All',
+  time: 'Po - Pá: 8:00 - 18:00, So - Ne: 10:00 - 18:00',
+  content: ' je netradiční kavárna, která na tomto místě chyběla.',
+  lat: 50.10782923945228, 
+  lng: 14.448746107986691,
+},
+{
+  name: 'Mezi Srnky',
+  address: 'Sázavská 720/19, 120 00 Praha 2-Vinohrady',
+  district: 'Vinohrady',
+  time: 'Po - Pá: 8:00 - 16:00 So - Ne: 9:00 - 16:00',
+  content: '',
+  lat: 50.076046307224324,
+  lng: 14.440395740961378,
+}
+
 ];
 
 // Map
@@ -93,38 +139,10 @@ function initMap() {
     center: center,
     zoom: 12
   });
-  
-  // Create markers
-  // for (let i = 0; i < listCoffeehouse.length; i++) {
-  //   const marker = new google.maps.Marker({
-  //     position: new google.maps.LatLng(listCoffeehouse[i].lat, listCoffeehouse[i].lng),
-  //     icon: icons.coffeehouse.icon,
-  //     title: listCoffeehouse[i].title,
-  //     map: map,
-  //   })
-
-  //   // Create InfoWindow
-  //   const infoWindow = new google.maps.InfoWindow({ 
-  //     content: `<div id="content">
-  //     <div id="siteNotice"> 
-  //         </div> 
-  //         <h2 id="firstHeading" class="firstHeading">  ${listCoffeehouse[i].name}
-  //         </h2> 
-  //         <div class="timeContent"><p><b>  ${listCoffeehouse[i].time}  </b></p></div> 
-  //         <div id="bodyContent"> 
-  //         <p><b>  ${listCoffeehouse[i].name}  </b>   ${listCoffeehouse[i].content} 
-  //         </div>`,
-  //   });
-
-  //   // InfoWindow event
-  //   marker.addListener('click', () => {
-  //   infoWindow.open(map, marker);
-  //   })
-  // }
 
   // Add list
   let currentMarkers = []
-  function addList({name,address,time, lat, lng, content}) {
+  function addList({name, address, time, lat, lng, content}) {
     let wrapper = document.createElement('div')
     wrapper.classList.add('coffeehouse')
     wrapper.innerHTML = `
@@ -132,7 +150,6 @@ function initMap() {
         <p class="list-adress">${address}</p>
         <p class="list-time">${time}</p>
     `
-
     coffeehouse.appendChild(wrapper);
 
     const marker = new google.maps.Marker({  //vytvoří markery, které patří k vyfilrovaným kavárnám
@@ -142,6 +159,27 @@ function initMap() {
       title: name,
       map: window.map,
     })
+
+  //   function toggleItem() {    JE TŘEBA DODĚLAT
+  //     const toggles = document.querySelectorAll('.list-toggle');
+  //     toggles.forEach(toggle => {
+  //       toggle.addEventListener('click', () => {
+  //         toggle.parentNode.classList.toggle('active');
+  //       })
+  //     })
+  //   }
+
+  //   <div class="list-container">
+  //   <div class="list">
+  //     <p class="list-title">Další informace</p>
+  //     <p class="list-text">www.nejakastranka.cz</p>
+
+  //     <button class="list-toggle">
+  //       <i class="fas fa-chevron-down"></i>
+  //       <i class="fas fa-times"></i>
+  //     </button>
+  // </div>
+  //   toggleItem();
      
     // Animation marker
     marker.addListener('click', animationMarker);
@@ -161,12 +199,11 @@ function initMap() {
       })
     }
 
-    // function markedListItem () {
+    // function markedListItem () {  // označí která ikonka k položce patří (animace)
     //   wrapper.classList.add('coffeehouse__hover');
 
     // }
   
-
     // Create InfoWindow
     const infoWindow = new google.maps.InfoWindow({ 
       content: `
@@ -194,17 +231,49 @@ function initMap() {
   // Add filter 
   function filterItem(event) {
     let target = event.target,
-    district = target.dataset.district
+    district = target.dataset.district    
     
-    document.querySelector('.list-coffeehouse').innerHTML = '' // vymaže načtený obsah
-    currentMarkers.forEach(marker => marker.setMap(null)) // vynuluje markery a načte jen aktuální
-    currentMarkers = []
+    document.querySelector('.list-coffeehouse').innerHTML = ''; // vymaže načtený obsah
+    currentMarkers.forEach(marker => marker.setMap(null)); // vynuluje markery a načte jen aktuální
+    currentMarkers = [];
+
     listCoffeehouse.forEach(dstr => {
-      if(dstr.district.toLowerCase() === district.toLowerCase()) addList(dstr)
+      if (district === 'all') {
+        addList(dstr);
+      } else if (dstr.district.toLowerCase() === district.toLowerCase()) {
+        addList(dstr);
+      }
     })
-
-
-    
   }
 
 }
+
+
+// OLD CODE
+ // Create markers
+  // for (let i = 0; i < listCoffeehouse.length; i++) {
+  //   const marker = new google.maps.Marker({
+  //     position: new google.maps.LatLng(listCoffeehouse[i].lat, listCoffeehouse[i].lng),
+  //     icon: icons.coffeehouse.icon,
+  //     title: listCoffeehouse[i].title,
+  //     map: map,
+  //   })
+
+  //   // Create InfoWindow
+  //   const infoWindow = new google.maps.InfoWindow({ 
+  //     content: `<div id="content">
+  //     <div id="siteNotice"> 
+  //         </div> 
+  //         <h2 id="firstHeading" class="firstHeading">  ${listCoffeehouse[i].name}
+  //         </h2> 
+  //         <div class="timeContent"><p><b>  ${listCoffeehouse[i].time}  </b></p></div> 
+  //         <div id="bodyContent"> 
+  //         <p><b>  ${listCoffeehouse[i].name}  </b>   ${listCoffeehouse[i].content} 
+  //         </div>`,
+  //   });
+
+  //   // InfoWindow event
+  //   marker.addListener('click', () => {
+  //   infoWindow.open(map, marker);
+  //   })
+  // }

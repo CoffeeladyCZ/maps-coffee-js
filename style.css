@@ -5,7 +5,7 @@
 
 /* Map */
 #map {
-  height: 600px;
+  height: 520px;
   width: 50%;
   border: 4px solid #9F2B1F;
   border-radius: 8px;
@@ -217,6 +217,69 @@ footer p {
 .coffeehouse__hover {
   background-color: #D7DBDD;
 }
+
+/* .list-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.list {
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3 ease;
+}
+
+.list-text {
+  display: none;
+  margin: 30px 0 0;
+}
+
+.list.active .list-text {
+  display: block;
+}
+
+.list-toggle {
+  background-color: transparent;
+  font-family: 'Font Awesome 5 Free';
+
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 0;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+.list-toggle:focus {
+  outline: 0;
+}
+
+.list-toggle .fa-times {
+  display: none;
+}
+
+.list.active .list-toggle .fa-chevron-down {
+  color:#9F2B1F;
+  display: block;
+}
+
+.list.active .list-toggle .fa-times {
+  color:#9F2B1F;
+  display: block;
+}
+
+.list.active .list-toggle .fa-chevron-down {
+  display: none;
+} */
+
+
 
 /* maps marker */
 .marker-img {
