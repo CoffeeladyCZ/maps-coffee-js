@@ -1,24 +1,20 @@
 // Variales
-// const letna = document.querySelector('#letna'),
-//       karlin = document.querySelector('#karlin'),
-//       vinohrady = document.querySelector('#vinohrady'),
-//       nusle = document.querySelector('#nusle'),
-//       dejvice = document.querySelector('#dejvice'),
-//       centrum = document.querySelector('#centrum'),
 const coffeehouse = document.querySelector('.list-coffeehouse'),
       markers = document.querySelectorAll('#letna, #karlin, #vinohrady, #nusle, #dejvice, #centrum'),
-
-// Create icon
-    icons = {
-      coffeehouse: {
-        name: 'CoffeeHouse',
-        icon: "img/coffee-shop.png",
-      }
-};
+      icons = [
+        {
+          name: 'CoffeeHouse',
+          icon: 'img/coffee-shop.png',
+        },
+        {
+          name: 'My location',
+          icon: 'img/pin.svg',
+        },
+      ];
 
 // list of coffeehouse
 const listCoffeehouse = [
-  {
+{
   name: 'Kofárna',
   time: 'Po - Ne: 8:00 - 19:00',
   address: 'Zborovská 60, Malá Strana',
@@ -128,7 +124,6 @@ const listCoffeehouse = [
   lat: 50.076046307224324,
   lng: 14.440395740961378,
 }
-
 ];
 
 // Map
@@ -139,6 +134,56 @@ function initMap() {
     center: center,
     zoom: 12
   });
+
+  // Localization
+  function localization() {
+    infoWindow = new google.maps.InfoWindow();
+    
+    const localizationButton = document.createElement('button');
+    localizationButton.classList.add('location-btn');
+    
+    window.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(localizationButton)
+
+    localizationButton.addEventListener('click', () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+
+            const marker = new google.maps.Marker({
+              icon: icons[1].icon,
+              map: window.map,
+              })
+
+            if (marker.setPosition() !== null) {
+              marker.setPosition(null);
+              marker.setPosition(pos);
+            }
+            window.map.setCenter(pos);
+          },
+          () => {
+            handleLocalizationError(true, infoWindow, window.map.getCenter())
+          }
+        );
+      } else {
+        handleLocalizationError(false, infoWindow, window.map.getCenter())
+      }
+    });
+  }
+  localization();
+
+  function handleLocalizationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+      ? "Erorr: The Geolocation servise failed."
+      : "Error: Your browser doesn't support geolocation."
+    );
+    infoWindow.open(window.map);
+  }
 
   // Add list
   let currentMarkers = []
@@ -152,57 +197,32 @@ function initMap() {
     `
     coffeehouse.appendChild(wrapper);
 
-    const marker = new google.maps.Marker({  //vytvoří markery, které patří k vyfilrovaným kavárnám
+    let marker = new google.maps.Marker({  //vytvoří markery, které patří k vyfilrovaným kavárnám
       position: new google.maps.LatLng(lat, lng),
-      icon: icons.coffeehouse.icon,
+      icon: icons[0].icon,
       animation: google.maps.Animation.DROP,
       title: name,
       map: window.map,
     })
-
-  //   function toggleItem() {    JE TŘEBA DODĚLAT
-  //     const toggles = document.querySelectorAll('.list-toggle');
-  //     toggles.forEach(toggle => {
-  //       toggle.addEventListener('click', () => {
-  //         toggle.parentNode.classList.toggle('active');
-  //       })
-  //     })
-  //   }
-
-  //   <div class="list-container">
-  //   <div class="list">
-  //     <p class="list-title">Další informace</p>
-  //     <p class="list-text">www.nejakastranka.cz</p>
-
-  //     <button class="list-toggle">
-  //       <i class="fas fa-chevron-down"></i>
-  //       <i class="fas fa-times"></i>
-  //     </button>
-  // </div>
-  //   toggleItem();
      
     // Animation marker
     marker.addListener('click', animationMarker);
+    wrapper.addEventListener('click', animationMarker);
 
     function animationMarker() {
       if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
-        wrapper.classList.remove('coffeehouse__hover');
+        wrapper.classList.remove('coffeehouse__hover')
       } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         wrapper.classList.add('coffeehouse__hover');
       }
-
+       ;
       window.map.addListener('click', () => {
         marker.setAnimation(null);
         wrapper.classList.remove('coffeehouse__hover');
       })
     }
-
-    // function markedListItem () {  // označí která ikonka k položce patří (animace)
-    //   wrapper.classList.add('coffeehouse__hover');
-
-    // }
   
     // Create InfoWindow
     const infoWindow = new google.maps.InfoWindow({ 
@@ -246,34 +266,41 @@ function initMap() {
     })
   }
 
+  // Loading
+  function loadingList() {
+    let newArray = [];
+    listCoffeehouse.forEach(array, () => {
+      newArray
+    })
+  }
+
 }
 
 
-// OLD CODE
- // Create markers
-  // for (let i = 0; i < listCoffeehouse.length; i++) {
-  //   const marker = new google.maps.Marker({
-  //     position: new google.maps.LatLng(listCoffeehouse[i].lat, listCoffeehouse[i].lng),
-  //     icon: icons.coffeehouse.icon,
-  //     title: listCoffeehouse[i].title,
-  //     map: map,
-  //   })
+// nová funkce
+// vytvořím nové pole, kam se načtou pouze první 4 položky a při každém kliknutí na "odkaz"
+// spustím event, který smaže původní pole a načte nové s dalšími 4 položkami.
 
-  //   // Create InfoWindow
-  //   const infoWindow = new google.maps.InfoWindow({ 
-  //     content: `<div id="content">
-  //     <div id="siteNotice"> 
-  //         </div> 
-  //         <h2 id="firstHeading" class="firstHeading">  ${listCoffeehouse[i].name}
-  //         </h2> 
-  //         <div class="timeContent"><p><b>  ${listCoffeehouse[i].time}  </b></p></div> 
-  //         <div id="bodyContent"> 
-  //         <p><b>  ${listCoffeehouse[i].name}  </b>   ${listCoffeehouse[i].content} 
-  //         </div>`,
-  //   });
 
-  //   // InfoWindow event
-  //   marker.addListener('click', () => {
-  //   infoWindow.open(map, marker);
-  //   })
-  // }
+
+
+    //   function toggleItem() {    JE TŘEBA DODĚLAT
+  //     const toggles = document.querySelectorAll('.list-toggle');
+  //     toggles.forEach(toggle => {
+  //       toggle.addEventListener('click', () => {
+  //         toggle.parentNode.classList.toggle('active');
+  //       })
+  //     })
+  //   }
+
+  //   <div class="list-container">
+  //   <div class="list">
+  //     <p class="list-title">Další informace</p>
+  //     <p class="list-text">www.nejakastranka.cz</p>
+
+  //     <button class="list-toggle">
+  //       <i class="fas fa-chevron-down"></i>
+  //       <i class="fas fa-times"></i>
+  //     </button>
+  // </div>
+  //   toggleItem();
