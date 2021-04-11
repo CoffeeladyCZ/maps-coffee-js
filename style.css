@@ -24,7 +24,8 @@ body,
   font-family: 'Varela Round', sans-serif;  
   font-size: 1em;
   height: 100%;
-  background-color: #fff ;
+  background-color: #fff;
+  color: #000;
 }
 
 img {
@@ -114,17 +115,15 @@ footer p {
   text-transform: uppercase;
   text-decoration: none;
   list-style: none;
-  color:#9F2B1F;
   transition: all 0.15s ease-in;
 }
 
 .navigation li:hover {
-  color: #C92E1E;
+  color:#9F2B1F;
 }
 
-.navigation a {
-  text-decoration: none;
-  color: #000;
+.active {
+  color:#9F2B1F;
 }
 
 .navigation .menu-icon {
@@ -207,7 +206,7 @@ footer p {
 }
 
 .location-btn:hover {
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(255, 255, 255);
 }
 
 

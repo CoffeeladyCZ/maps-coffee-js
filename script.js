@@ -251,7 +251,7 @@ function initMap() {
   // Add filter 
   function filterItem(event) {
     let target = event.target,
-    district = target.dataset.district    
+    district = target.dataset.district;
     
     document.querySelector('.list-coffeehouse').innerHTML = ''; // vymaže načtený obsah
     currentMarkers.forEach(marker => marker.setMap(null)); // vynuluje markery a načte jen aktuální
@@ -266,13 +266,28 @@ function initMap() {
     })
   }
 
-  // Loading
-  function loadingList() {
-    let newArray = [];
-    listCoffeehouse.forEach(array, () => {
-      newArray
+  // Active li
+  const activeLi = document.querySelectorAll('.li');
+  activeLi.forEach(cls => {
+    cls.addEventListener('click', () => {
+      removeActiveClasses();
+      cls.classList.add('active');
+    })
+  })
+
+  function removeActiveClasses() {
+    activeLi.forEach(cls => {
+      cls.classList.remove('active');
     })
   }
+
+  // // Loading
+  // function loadingList() {                          DODĚLAT
+  //   let newArray = [];
+  //   listCoffeehouse.forEach(array, () => {
+  //     newArray
+  //   })
+  // }
 
 }
 
