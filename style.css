@@ -245,6 +245,41 @@ footer p {
   background-color: #D7DBDD;
 }
 
+/* Button */
+.btn {
+  align-self: flex-end;
+}
+
+.fas {
+  color: #9F2B1F;
+  font-size: 24px;
+}
+
+.fas:hover {
+  color: #C92E1E;
+}
+
+#btn-next,
+#btn-prev {
+
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+#btn-next:focus,
+#btn-prev:focus {
+  outline: 0;
+} 
+
+
+
+
+
+
+
+
 /* .list-container {
   max-width: 600px;
   margin: 0 auto;

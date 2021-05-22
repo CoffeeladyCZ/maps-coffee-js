@@ -18,9 +18,9 @@
     <img class="coffee-cup" src=./img/coffee-cup.png />
  
     <div class="navigation">
-      <input class="menu-btn" type="checkbox" id="menu-btn">
+      <input class="menu-btn" type="checkbox" id="menu-btn"></input>
       <label for="menu-btn" class="menu-icon"><span class="nav-icon"></span></label>
-      </label>
+     
       <ul class="navigation-menu">
         <li data-district="all" class="li toggle">All</li>
         <li data-district="letná" class="li">Letná</li>
@@ -36,6 +36,10 @@
   <section class="App-map">
     <div id="map"></div>
     <div class="list-coffeehouse"></div>
+    <div class="btn">
+      <button id="btn-prev"><i class="fas fa-chevron-down"></i></button>
+      <button id="btn-next"><i class="fas fa-chevron-up"></i></button>
+    </div>
   </section>
 
   <footer>
@@ -43,6 +47,8 @@
   </footer>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmh8Jp0cdEFCQ2N5wsXy6Hu6xBOtm9lfU&callback=initMap"></script>
+  <script type="module" src="data.js"></script>
   <script src='script.js'></script>
+
 </body>
 </html>
