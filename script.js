@@ -1,5 +1,3 @@
-// import listCoffeehouse from './data.js'
-
 // Variales
 const coffeehouse = document.querySelector('.list-coffeehouse'),
       markers = document.querySelectorAll('#letna, #karlin, #vinohrady, #nusle, #dejvice, #centrum'),
@@ -152,6 +150,16 @@ const listCoffeehouse = [
   lat: 50.08459124214152, 
   lnt: 14.375977737345796
 },
+{
+  name: 'The Flat Café',
+  address: 'Kodaňská 81/4, 101 00 Praha 10-Vršovice',
+  district: 'Vršovice',
+  time: 'Po - Pá: 8:30 - 22:00, So: 9:00 - 23:00, Ne: 9:00 - 16:00',
+  content: 'Anglie v Praze',
+  lat: 50.071209365923345,
+  lnt: 14.451311520864516
+}
+
 
 ];
 
@@ -243,6 +251,17 @@ function initMap() {
         <h4 class="list-name">${name}</h4>
         <p class="list-adress">${address}</p>
         <p class="list-time">${time}</p>
+        <div class="list-container">
+          <div class="list">
+            <p class="list-title">Další informace</p>
+            <p class="list-text">${content}</p>
+
+            <div class="list-toggle">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+        </div>
     `
     coffeehouse.appendChild(wrapper);
     
@@ -255,7 +274,13 @@ function initMap() {
       map: window.map,
     })
 
-    
+    // Toggle information
+    const toggles = document.querySelectorAll('.list-toggle');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        toggle.parentNode.classList.toggle('active')      
+      })
+    })
          
     // Animation marker
     marker.addListener('click', () => {
@@ -273,7 +298,7 @@ function initMap() {
         <div id="siteNotice"></div> 
         <h2 id="firstHeading" class="firstHeading">${name}</h2> 
         <div class="timeContent"><p><b>${time}</b></p></div> 
-        <div id="bodyContent"><p><b>${name}</b>${content}</div>`,
+      </div>`,
     });
 
     marker.addListener('click', () => {      
@@ -323,10 +348,8 @@ function initMap() {
     })
   }
 
-  // Carousel
- 
 
-
+  
 
 
 
@@ -337,26 +360,4 @@ function initMap() {
 // vytvořím nové pole, kam se načtou pouze první 4 položky a při každém kliknutí na "odkaz"
 // spustím event, který smaže původní pole a načte nové s dalšími 4 položkami.
 
-
-
-
-    //   function toggleItem() {    JE TŘEBA DODĚLAT
-  //     const toggles = document.querySelectorAll('.list-toggle');
-  //     toggles.forEach(toggle => {
-  //       toggle.addEventListener('click', () => {
-  //         toggle.parentNode.classList.toggle('active');
-  //       })
-  //     })
-  //   }
-
-  //   <div class="list-container">
-  //   <div class="list">
-  //     <p class="list-title">Další informace</p>
-  //     <p class="list-text">www.nejakastranka.cz</p>
-
-  //     <button class="list-toggle">
-  //       <i class="fas fa-chevron-down"></i>
-  //       <i class="fas fa-times"></i>
-  //     </button>
-  // </div>
-  //   toggleItem();
+ 
